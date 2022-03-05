@@ -1,0 +1,8 @@
+.player-body {
+    display: flex;
+    overflow-y: hidden;
+}
+
+.player {
+    overflow-y: hidden;
+}

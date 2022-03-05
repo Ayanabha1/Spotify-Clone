@@ -1,0 +1,143 @@
+.footer {
+    position: fixed;
+    bottom: 0;
+    height: 50px;
+    /* width: 100%; */
+    background-color: #181818;
+    padding: 20px;
+    display: flex;
+    width: 98%;
+    justify-content: space-between;
+    color: white;
+    align-items: center;
+}
+
+.footer-icons {
+    color: #B3B3B3;
+}
+
+/* Album and song section */
+
+.footer-left {
+    flex: 0.3;
+    display: flex;
+    width: 30%;
+    align-items: center;
+    color: #B3B3B3;
+}
+
+
+.footer-album-logo {
+    width: 40px;
+    object-fit: contain;
+    margin-right: 15px;
+}
+
+.footer-album-details {
+    display: flex;
+    font-size: 13px;
+    max-width: 45%;
+}
+
+.footer-album-details .album-info {
+    overflow: hidden;
+}
+
+.footer-album-details .album-options {
+    margin-left: 10px;
+    cursor: pointer;
+}
+
+/* Media Controller Section */
+
+
+.footer-center {
+    flex: 0.4;
+    /* padding: 0 100px; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+
+
+.footer-center-top {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 7px;
+}
+
+.footer-play-icon {
+    transform: scale(1.2);
+    transition: all 0.15s ease-in-out;
+}
+
+.footer-play-icon:hover {
+    transform: scale(1.3);
+    transition: all 0.15s ease-in-out;
+}
+
+.footer-center-bottom {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    color: #A7A7A7;
+    font-size: 12px;
+    letter-spacing: 0.5px;
+}
+
+.footer-center-bottom input[type="range"] {
+    width: 100%;
+    max-width: unset;
+    margin: 0 9px;
+    background-color: #535353;
+}
+
+
+
+.footer-center-top .footer-icons {
+    margin: 0 4.5px;
+}
+
+
+/* Volume Controller and other stuff Section */
+
+
+
+.footer-right {
+    flex: 0.3;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+
+
+
+.footer-right .footer-icons {
+    margin: 0 3.5px;
+}
+
+input[type="range"] {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    border-radius: 26px;
+    height: 3px;
+    background-color: #B3B3B3;
+    width: 50%;
+    min-width: 50px;
+    max-width: 100px;
+    cursor: pointer;
+}
+
+
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    width: 0;
+    height: 0;
+}

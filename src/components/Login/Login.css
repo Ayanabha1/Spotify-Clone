@@ -1,0 +1,25 @@
+.Login {
+    /* display: grid; */
+    /* place-items: center; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #140C0B;
+}
+
+.Login>img {
+    width: 25%;
+    min-width: 250px;
+    max-width: 320px;
+}
+
+.Login>a {
+    padding: 20px;
+    background-color: #1db954;
+    border-radius: 99px;
+    font-weight: 700;
+    color: white;
+    text-decoration: none;
+}

@@ -1,0 +1,8 @@
+.body {
+    height: 100vh;
+    flex: 0.8;
+    background: linear-gradient(#20115B, rgb(0, 0, 0, 1));
+    color: white;
+    padding: 30px;
+    overflow-y: hidden;
+}
