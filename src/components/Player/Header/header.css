@@ -16,7 +16,8 @@
 }
 
 .header-left {
-    width: 7.7%;
+    width: 6.7%;
+    min-width: 88px;
     display: flex;
     justify-content: space-between;
     align-items: center;

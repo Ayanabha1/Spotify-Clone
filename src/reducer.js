@@ -32,6 +32,11 @@ const reducer = (state, action) => {
         ...state,
         loggedin: action.loggedin,
       };
+    case "SET_CURRENT_PLAYBACK_STATE":
+      return {
+        ...state,
+        playbackState: action.playbackState,
+      };
 
     default:
       return state;

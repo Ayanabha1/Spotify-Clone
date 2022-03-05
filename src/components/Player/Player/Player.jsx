@@ -13,7 +13,9 @@ function Player() {
         <Body />
       </div>
 
-      <Footer />
+      <div className="player-footer">
+        <Footer />
+      </div>
     </div>
   );
 }

@@ -33,21 +33,6 @@ function App() {
     }
   };
 
-  // const getInititalToken = () => {
-  //   const _token = localStorage.getItem("SPOTIFY_TOKEN");
-  //   if (_token) {
-  //     dispatch({
-  //       type: "SET_TOKEN",
-  //       token: _token,
-  //     });
-  //     dispatch({
-  //       type: "SET_LOGIN_STATUS",
-  //       loggedin: true,
-  //     });
-  //     spotify.setAccessToken(_token);
-  //   }
-  // };
-
   const logout = () => {
     if (token) {
       localStorage.removeItem("SPOTIFY_TOKEN");
@@ -62,7 +47,6 @@ function App() {
   // Function to get the playlists and all
 
   const fetchSpotifyDetails = () => {
-    // console.log(token);
     // Get User Details
     spotify.getMe().then((_user) => {
       // console.log(_user);
@@ -90,13 +74,34 @@ function App() {
     //     console.log(err.response);
     //   });
   };
-  useEffect(() => {
-    login();
-  }, []);
+
+  // Function to get the current state of spotify
+
+  function getCurrentState() {
+    spotify.getMyCurrentPlaybackState().then((data) => {
+      console.log(data);
+      dispatch({
+        type: "SET_CURRENT_PLAYBACK_STATE",
+        playbackState: data,
+      });
+    });
+
+    // setInterval(() => {
+    //   getCurrentState();
+    // }, 1000);
+  }
 
   useEffect(() => {
     fetchSpotifyDetails();
   }, [loggedin]);
+
+  useEffect(() => {
+    login();
+    getCurrentState();
+    // setInterval(() => {
+    //
+    // }, 1000);
+  }, []);
 
   useEffect(() => {
     if (!loggedin) {
