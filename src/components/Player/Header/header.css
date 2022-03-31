@@ -1,9 +1,17 @@
 .header {
-    width: 100%;
     display: flex;
     width: 100%;
     justify-content: space-between;
     align-items: center;
+}
+
+.header-container {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    padding: 30px;
+    padding-bottom: 0;
 }
 
 .header-icon {
@@ -31,6 +39,7 @@
     border-radius: 20px;
     position: relative;
     box-shadow: 1px 1px 35px rgba(0, 0, 0, 0.3);
+    transition: background-color 250ms ease-in-out;
 }
 
 .header-right>p {
@@ -40,6 +49,11 @@
 .header-profile-container {
     margin-right: 10px;
     display: flex;
+}
+
+.header-profile-container img {
+    width: 30px;
+    height: 30px;
 }
 
 
@@ -86,4 +100,21 @@
 .user-profile-img {
     height: 40px;
     border-radius: 50%;
+}
+
+
+@media only screen and (max-width: 802px) {
+    .header-right>p {
+        display: none;
+    }
+
+    .dr-down-toggler {
+        display: none !important;
+    }
+
+    .header-right {
+        width: 40px;
+        background-color: rgba(0, 0, 0, 0.08);
+        transition: background-color 250ms ease-in-out;
+    }
 }

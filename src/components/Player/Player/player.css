@@ -8,12 +8,7 @@
 .player-body {
     display: flex;
     overflow-y: hidden;
-    height: 90%;
-}
-
-.player-footer {
-    height: 10%;
-    padding-bottom: 5px;
+    /* height: 90%; */
 }
 
 ::-webkit-scrollbar {

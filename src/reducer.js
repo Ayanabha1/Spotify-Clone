@@ -1,3 +1,6 @@
+import SpotifyWebApi from "spotify-web-api-js";
+const spotify = new SpotifyWebApi();
+
 export const initialState = {
   user: null,
   playlists: [],
@@ -5,6 +8,8 @@ export const initialState = {
   item: null,
   token: null,
   loggedin: false,
+  spotify: spotify,
+  primaryColor: "rgb(20, 64, 89)",
 };
 
 const reducer = (state, action) => {
@@ -12,6 +17,11 @@ const reducer = (state, action) => {
   // console.log(action);
 
   switch (action.type) {
+    case "SET_PRIMARY_COLOR":
+      return {
+        ...state,
+        primaryColor: action.primaryColor,
+      };
     case "SET_USER":
       return {
         ...state,
@@ -36,6 +46,21 @@ const reducer = (state, action) => {
       return {
         ...state,
         playbackState: action.playbackState,
+      };
+    case "SET_CATEGORIES":
+      return {
+        ...state,
+        categories: action.categories,
+      };
+    case "SET_CATEGORY_LIST":
+      return {
+        ...state,
+        categoryList: action.categoryList,
+      };
+    case "SET_PLAYLIST_ID":
+      return {
+        ...state,
+        playlistId: action.playlistId,
       };
 
     default:

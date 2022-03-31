@@ -27,48 +27,54 @@ function Header() {
 
   return (
     <div className="header">
-      <div className="header-left">
-        <ArrowBackIosOutlined className="header-icon arrow-icon" />
-        <ArrowForwardIosOutlined className="header-icon arrow-icon" />
-      </div>
-      <div
-        className="header-right"
-        onClick={() => {
-          setDrClicked((state) => !state);
-        }}
-      >
-        <div className="header-profile-container">
-          {user?.images ? (
-            <img src={user.images[0].url} alt="" className="user-profile-img" />
-          ) : (
-            <AccountCircleRounded
-              className="header-profile-icon"
-              fontSize="large"
-            />
-          )}
+      <div className="header-container">
+        <div className="header-left">
+          <ArrowBackIosOutlined className="header-icon arrow-icon" />
+          <ArrowForwardIosOutlined className="header-icon arrow-icon" />
         </div>
-        <p>{user?.display_name}</p>
-
-        {!drClicked ? (
-          <KeyboardArrowDownOutlined />
-        ) : (
-          <KeyboardArrowUpOutlined />
-        )}
-
         <div
-          className={`header-right-expand ${
-            drClicked && "header-right-expand-show"
-          }`}
+          className="header-right"
+          onClick={() => {
+            setDrClicked((state) => !state);
+          }}
         >
-          <p className="header-menu-option">Account</p>
-          <p className="header-menu-option">Profile</p>
-          <p className="header-menu-option">Private Sessions</p>
-          <p className="header-menu-option">Settings</p>
-          <p className="header-menu-option">Profile</p>
-          <hr />
-          <span className="header-menu-option" onClick={() => logout()}>
-            Logout
-          </span>
+          <div className="header-profile-container">
+            {user?.images ? (
+              <img
+                src={user.images[0].url}
+                alt=""
+                className="user-profile-img"
+              />
+            ) : (
+              <AccountCircleRounded
+                className="header-profile-icon"
+                fontSize="large"
+              />
+            )}
+          </div>
+          <p>{user?.display_name}</p>
+
+          {!drClicked ? (
+            <KeyboardArrowDownOutlined className="dr-down-toggler" />
+          ) : (
+            <KeyboardArrowUpOutlined className="dr-down-toggler" />
+          )}
+
+          <div
+            className={`header-right-expand ${
+              drClicked && "header-right-expand-show"
+            }`}
+          >
+            <p className="header-menu-option">Account</p>
+            <p className="header-menu-option">Profile</p>
+            <p className="header-menu-option">Private Sessions</p>
+            <p className="header-menu-option">Settings</p>
+            <p className="header-menu-option">Profile</p>
+            <hr />
+            <span className="header-menu-option" onClick={() => logout()}>
+              Logout
+            </span>
+          </div>
         </div>
       </div>
     </div>

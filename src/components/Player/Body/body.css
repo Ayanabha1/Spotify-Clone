@@ -1,17 +1,13 @@
 .body {
-    height: 100vh;
-    flex: 0.8;
-    background: linear-gradient(#20115B, rgb(0, 0, 0, 1));
+    /* min-height: 100vh; */
+    flex: 0.85;
+    /* background: linear-gradient(rgb(20, 64, 89), rgb(0, 0, 0, 1)); */
     color: white;
-    padding: 30px;
-    overflow-y: hidden;
+    overflow-y: scroll;
+    transition: all 250ms ease-in-out;
 }
 
 .main {
     margin-top: 30px;
-
-}
-
-.greetings {
-    font-weight: bold;
+    overflow: hidden;
 }

@@ -3,6 +3,8 @@ import "./player.css";
 import Sidebar from "../Sidebar/Sidebar";
 import Body from "../Body/Body";
 import Footer from "../Footer/Footer";
+import { Route, Routes } from "react-router-dom";
+import Playlist from "../Playlist/Playlist";
 
 function Player() {
   return (

@@ -6,14 +6,14 @@ import { getTokenFromUrl } from "./components/spotify";
 import SpotifyWebApi from "spotify-web-api-js";
 import Player from "./components/Player/Player/Player";
 import { useDataLayerValue } from "./Datalayer";
-import { Redirect } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 function App() {
-  const [{ user, token, loggedin }, dispatch] = useDataLayerValue();
-  const spotify = new SpotifyWebApi();
+  const [{ user, token, loggedin, spotify, categories }, dispatch] =
+    useDataLayerValue();
+  // const spotify = new SpotifyWebApi();
 
   // Functions to login and logout
-
   const login = async () => {
     const hash = getTokenFromUrl();
     const _token = localStorage.getItem("SPOTIFY_TOKEN") || hash.access_token;
@@ -46,9 +46,9 @@ function App() {
 
   // Function to get the playlists and all
 
-  const fetchSpotifyDetails = () => {
+  const fetchSpotifyDetails = async () => {
     // Get User Details
-    spotify.getMe().then((_user) => {
+    await spotify.getMe().then((_user) => {
       // console.log(_user);
       dispatch({
         type: "SET_USER",
@@ -58,29 +58,55 @@ function App() {
 
     // Get User Playlists
     spotify.getUserPlaylists().then((playlists) => {
+      // console.log(playlists);
       dispatch({
         type: "SET_PLAYLISTS",
         playlists,
       });
     });
 
-    // Get User Album List
-    // spotify
-    //   .getMySavedAlbums(token)
-    //   .then((data) => {
-    //     console.log(data);
-    //   })
-    //   .catch((err) => {
-    //     console.log(err.response);
-    //   });
+    // Get several categories
+
+    spotify
+      .getCategories({ limit: 10, country: "IN" })
+      .then((data) => {
+        console.log(data);
+        dispatch({
+          type: "SET_CATEGORIES",
+          categories: data.categories,
+        });
+      })
+      .catch((err) => console.log(err.response));
   };
+
+  // Get category
+  async function getCategoryItems() {
+    let categList = [];
+    await categories.items.forEach(async (category) => {
+      await spotify
+        .getCategoryPlaylists(`${category.id}`)
+        .then((data) =>
+          categList.push({ name: category.name, playlists: data.playlists })
+        )
+        .catch((err) => console.log(err));
+    });
+    dispatch({
+      type: "SET_CATEGORY_LIST",
+      categoryList: categList,
+    });
+  }
+
+  useEffect(() => {
+    // console.log(categories);
+    getCategoryItems();
+  }, [categories]);
 
   // Function to get the current state of spotify
 
-  function getCurrentState() {
-    spotify.getMyCurrentPlaybackState().then((data) => {
-      console.log(data);
-      dispatch({
+  async function getCurrentState() {
+    spotify.getMyCurrentPlaybackState().then(async (data) => {
+      // console.log(data);
+      await dispatch({
         type: "SET_CURRENT_PLAYBACK_STATE",
         playbackState: data,
       });
@@ -88,16 +114,23 @@ function App() {
 
     // setInterval(() => {
     //   getCurrentState();
-    // }, 1000);
+    // }, 5000);
   }
 
   useEffect(() => {
-    fetchSpotifyDetails();
+    async function _fetchSpotifyDetails() {
+      await fetchSpotifyDetails();
+    }
+    _fetchSpotifyDetails();
   }, [loggedin]);
 
   useEffect(() => {
     login();
-    getCurrentState();
+    async function _getCurrentState() {
+      await getCurrentState();
+    }
+
+    _getCurrentState();
     // setInterval(() => {
     //
     // }, 1000);
@@ -113,11 +146,12 @@ function App() {
     if (loggedin) {
     }
   }, [loggedin, dispatch]);
-
   return (
-    <div className="App">
-      {token ? <Player spotify={spotify} /> : <Login />}
-    </div>
+    <Router>
+      <div className="App">
+        {token ? <Player spotify={spotify} /> : <Login />}
+      </div>
+    </Router>
   );
 }
 

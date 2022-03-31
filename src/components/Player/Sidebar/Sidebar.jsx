@@ -7,19 +7,24 @@ import LibraryMusicIcon from "@material-ui/icons/LibraryMusic";
 import { useDataLayerValue } from "../../../Datalayer";
 import AddBoxIcon from "@material-ui/icons/AddBox";
 import FavoriteIcon from "@material-ui/icons/Favorite";
+import { Link } from "react-router-dom";
 
 function Sidebar() {
   const [{ playlists }, dispatch] = useDataLayerValue();
 
   return (
     <div className="sidebar">
-      <img
-        src="https://getheavy.com/wp-content/uploads/2019/12/spotify2019-830x350.jpg"
-        alt=""
-        className="sidebar-logo"
-      />
+      <Link to="/">
+        <img
+          src="https://getheavy.com/wp-content/uploads/2019/12/spotify2019-830x350.jpg"
+          alt=""
+          className="sidebar-logo"
+        />
+      </Link>
       <div className="sidebarOptions-container">
-        <SidebarOption title="Home" Icon={HomeIcon} />
+        <Link to="/">
+          <SidebarOption title="Home" Icon={HomeIcon} />
+        </Link>
         <SidebarOption title="Search" Icon={SearchIcon} />
         <SidebarOption title="Your Library" Icon={LibraryMusicIcon} />
       </div>
@@ -30,7 +35,11 @@ function Sidebar() {
       <hr />
 
       {playlists?.items?.map((list, i) => {
-        return <SidebarOption title={list.name} key={i} />;
+        return (
+          <Link to={`playlist/${list.id}`}>
+            <SidebarOption title={list.name} key={i} />
+          </Link>
+        );
       })}
     </div>
   );

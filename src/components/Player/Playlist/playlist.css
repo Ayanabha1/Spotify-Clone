@@ -1,0 +1,123 @@
+/* Playlist Info Container */
+
+.playlist-top-container {
+    display: flex;
+    padding: 30px;
+}
+
+.playlist-img img {
+    max-width: 220px;
+    box-shadow: 1px 1px 30px rgba(0, 0, 0, 0.35);
+}
+
+.playlist-info {
+    display: flex;
+    flex-direction: column;
+    margin-left: 30px;
+    justify-content: flex-end;
+    margin-bottom: 10px;
+}
+
+.playlist-info-name {
+    font-size: 4vw;
+}
+
+.playlist-desc {
+    color: #C3C7CB;
+    margin: 7px 0;
+}
+
+.playlist-extra-details {
+    display: flex;
+    align-items: center;
+}
+
+.ped-sep {
+    width: 5px;
+    height: 5px;
+    background-color: white;
+    border-radius: 50%;
+    transform: translateY(50%);
+    margin: 0 5px;
+}
+
+
+/* Tracks container */
+
+.playlist-bottom-container {
+    padding: 10px 30px;
+    background-color: rgba(0 0 0/ 0.25);
+    min-height: 100vh;
+}
+
+
+.playlist-controls {
+    display: flex;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.playlist-controls img {
+    width: 44px;
+    margin-right: 20px;
+}
+
+.tracks-container table {
+    width: 100%;
+}
+
+
+.tracks-container table thead {
+    position: relative;
+}
+
+.tracks-container table thead:after {
+    content: "";
+    position: absolute;
+    bottom: -10px;
+    left: 0;
+    height: 1px;
+    width: 100%;
+    background-color: #c3c7cb73;
+}
+
+.tracks-container table thead th {
+    text-align: left;
+    color: #C3C7CB;
+    font-weight: 500;
+}
+
+.tracks-container table thead th:nth-child(1) {
+    width: 20px;
+}
+
+.tracks-container table thead th:last-child {
+    text-align: right;
+}
+
+.tracks-container table tbody tr:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+.tracks-container table tbody td {
+    padding: 10px 0;
+}
+
+
+.tracks-container table tbody tr:nth-child(1) td {
+    padding-top: 30px;
+}
+
+.tracks-container table tbody tr td:nth-child(2) {
+    display: flex;
+    align-items: center;
+}
+
+.tracks-container table tbody tr td:nth-child(2) img {
+    width: 40px;
+    margin-right: 20px;
+}
+
+.tracks-container table tbody tr td:last-child {
+    text-align: right;
+}

@@ -3,11 +3,9 @@
     bottom: 0;
     height: 100%;
     background-color: #181818;
-    padding: 10px 0;
     display: flex;
     flex-direction: column;
     /* width: 99%; */
-    justify-content: space-between;
     color: white;
     align-items: center;
 }
@@ -15,7 +13,7 @@
 .footer-main {
     width: 100%;
     display: flex;
-    padding: 0 10px;
+    padding-top: 10px;
 }
 
 .footer-icons {
@@ -36,6 +34,11 @@
     color: #B3B3B3;
 }
 
+.footer-left-container {
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
 
 .footer-album-logo {
     width: 60px;
@@ -53,6 +56,7 @@
 
 .footer-album-details .album-info {
     overflow: hidden;
+    height: 31px;
 }
 
 .footer-album-details .album-options {
@@ -80,7 +84,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-bottom: 7px;
+    margin-bottom: -7px;
 }
 
 .footer-play-icon {
@@ -127,6 +131,13 @@
     align-items: center;
 }
 
+.footer-right-container {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+    max-width: 300px;
+    align-items: center;
+}
 
 
 
@@ -134,25 +145,13 @@
     margin: 0 3.5px;
 }
 
-input[type="range"] {
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    border-radius: 26px;
-    height: 3px;
-    background-color: #B3B3B3;
-    width: 50%;
-    min-width: 50px;
-    max-width: 100px;
-    cursor: pointer;
+.footer-slider-container {
+    width: 100%;
+    margin: 0 10px;
+    display: flex;
 }
 
 
-input[type="range"]::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    width: 0;
-    height: 0;
-}
 
 .current-device {
     width: 100%;
@@ -160,13 +159,27 @@ input[type="range"]::-webkit-slider-thumb {
     height: 0;
     background-color: #1ED760;
     transition: all 200ms ease-in-out;
+    justify-content: flex-end;
+    align-items: center;
 }
 
 .current-device-show {
-    height: 20px;
     transition: all 200ms ease-in-out;
+    height: 25px;
 }
 
 .current-device-show.device-icon {
     display: none;
+}
+
+.current-device p {
+    color: black;
+    margin-right: 6%;
+    font-size: 13px;
+    margin-bottom: 2px;
+}
+
+.current-device-icon {
+    color: black;
+
 }
